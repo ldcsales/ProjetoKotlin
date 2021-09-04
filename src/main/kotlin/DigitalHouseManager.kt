@@ -184,4 +184,35 @@ professores e eliminá-lo da lista.
         println("Codigo de professor nao encontrado")
     }
 
+    /*
+    Criar um método na classe DigitalHouseManager que permita registrar um
+aluno. O método recebe como parâmetros o nome, o sobrenome e o código
+do aluno. O método deve criar um aluno com os dados correspondentes e
+adicioná-lo à lista de alunos.
+
+○ matricularAluno(nome: String, sobrenome: String, codigoAluno:
+Integer)
+     */
+
+    fun matricularAluno(
+        nome: String,
+        sobrenome: String,
+        codigoAluno: Int
+    ) {
+        for (cont in listaAlunos) {
+            if (codigoAluno == cont.codigo) {
+                println("Esse codigo ja existe. Nao e possivel registrar alunos com o mesmo codigo")
+                //imprimeCodigos()
+                return
+            }
+        }
+        try {
+            var aluno = Aluno(nome,sobrenome,codigoAluno)
+            listaAlunos.add(aluno)
+            println("Aluno Registrado")
+        } catch (ex: Exception) {
+            println("Nao foi possivel registrar esse Aluno! Tente Novamente.")
+        }
+    }
+
 }
