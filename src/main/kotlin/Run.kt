@@ -6,5 +6,4 @@ fun main() {
 
             println(aluno1==aluno2)
 
-
 }
