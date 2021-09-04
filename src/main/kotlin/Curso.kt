@@ -26,6 +26,8 @@ class Curso(
         }
     }
 
+    var qtdAtualAlunos = 0
+
     lateinit var listaMatriculados: MutableList<Aluno>
     lateinit var profTitular: ProfessorTitular
     lateinit var profAdjunto: ProfessorAdjunto
@@ -39,4 +41,40 @@ class Curso(
     override fun hashCode(): Int {
         return codigo
     }
+
+    fun adicionarUmAluno(umAluno: Aluno): Boolean {
+        if (qtdAtualAlunos < qtdMaximaAlunos) {
+            listaMatriculados.add(umAluno)
+            qtdAtualAlunos++
+            println(
+                """
+                Aluno matriculado
+                ${umAluno.codigo}
+                ${umAluno.nome} ${umAluno.sobrenome}
+                
+                Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.
+            """.trimIndent()
+            )
+            return true
+        } else {
+            println("Quantidade Maxima de alunos ja foi atingida.")
+            return false
+        }
+    }
+
+    fun excluirAluno(umAluno: Aluno) {
+        listaMatriculados.remove(umAluno)
+        qtdAtualAlunos--
+        println(
+            """
+                Aluno removido
+                ${umAluno.codigo}
+                ${umAluno.nome} ${umAluno.sobrenome}
+                
+                Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.
+            """.trimIndent()
+        )
+    }
+
+
 }
