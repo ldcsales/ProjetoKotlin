@@ -154,5 +154,34 @@ codigoProfessor: Integer, especialidade: String)
 
     }
 
+    /*
+    Criar um método na classe DigitalHouseManager que permita excluir um
+professor. O método recebe como parâmetro o código do professor. O
+método deve utilizar o código do professor para encontrá-lo na lista de
+professores e eliminá-lo da lista.
+
+○ fun excluirProfessor(codigoProfessor: Integer)
+     */
+
+    fun excluirProfessor(codigoProfessor: Int) {
+        if (codigoProfessor < 0) {
+            println("Codigo Invalido")
+            return
+
+        }
+        for (cont in listaProfessores) {
+            if (cont.codigo == codigoProfessor) {
+                try {
+                    listaProfessores.remove(cont)
+                    println("Professor foi removido da lista.")
+                    return
+                } catch (ex: Exception) {
+                    println("Nao foi possivel remover o professor da lista.")
+                }
+            }
+
+        }
+        println("Codigo de professor nao encontrado")
+    }
 
 }
