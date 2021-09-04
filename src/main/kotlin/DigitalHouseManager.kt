@@ -11,6 +11,16 @@ class DigitalHouseManager {
     lateinit var listaCursos: MutableList<Curso>
     lateinit var listaMatriculas: MutableList<Matricula>
 
+    /*
+    Criar um método na classe DigitalHouseManager que permita registrar um
+curso. O método recebe como parâmetros o nome do curso, o código e a
+quantidade máxima de alunos admitidos. O método deve criar um curso com
+os dados correspondentes e adicioná-lo à lista de cursos.
+
+    ○ fun registrarCurso(nome: String, codigoCurso: Integer,
+    quantidadeMaximaDeAlunos: Integer )
+     */
+
     fun registrarCurso(
         nome: String,
         codigoCurso: Int,
