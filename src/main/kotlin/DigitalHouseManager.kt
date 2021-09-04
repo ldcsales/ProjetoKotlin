@@ -223,5 +223,54 @@ Integer)
             println(cont.codigo)
         }
     }
+/*
+    Criar um método na classe DigitalHouseManager que permita matricular um
+    aluno em um curso. O método recebe como parâmetros o código do aluno e
+    o código do curso em que ele está se matriculando.
+
+    ○ matricularAluno(codigoAluno: Integer, codigoCurso: Integer)
+
+    O método deve:
+    ● Encontrar o curso em que o aluno está se matriculando.
+    ● Encontrar o aluno que queremos matricular.
+    ● Matricular o aluno, se for possível.
+    ● No caso de ser possível, criar uma matrícula e configurá-la com os
+    dados correspondentes.
+    ○ Adicionar a matrícula à lista de matrículas.
+    ○ Informar na tela que a matrícula foi realizada.
+    ● Se não houver vagas disponíveis:
+    ○ Informar na tela que não foi possível realizar a matrícula porque
+    não há vagas.
+*/
+
+    fun matricularAluno(
+        codigoAluno: Int,
+        codigoCurso: Int
+    ) {
+
+
+    }
+
+    //Consultar se existe o aluno na lista de alunos cadastrados
+
+    fun consultarAluno(codigoAluno: Int): Boolean {
+        for(cont in listaAlunos){
+            if(cont.codigo == codigoAluno){
+                return true
+            }
+        }
+        return false
+    }
+
+    //Consultar se existe o curso na lista de cursos cadastrados
+
+    fun consultarCurso(codigoCurso: Int): Boolean {
+        for(cont in listaCursos){
+            if(cont.codigo == codigoCurso){
+                return true
+            }
+        }
+        return false
+    }
 
 }
