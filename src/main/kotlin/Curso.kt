@@ -26,7 +26,7 @@ class Curso(
         }
     }
 
-    lateinit var listaMatriculados: List<Aluno>
+    lateinit var listaMatriculados: MutableList<Aluno>
     lateinit var profTitular: ProfessorTitular
     lateinit var profAdjunto: ProfessorAdjunto
 
