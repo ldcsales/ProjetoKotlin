@@ -28,7 +28,7 @@ class Curso(
 
     var qtdAtualAlunos = 0
 
-    lateinit var listaMatriculados: MutableList<Aluno>
+    var listaMatriculados = mutableListOf<Aluno>()
     lateinit var profTitular: ProfessorTitular
     lateinit var profAdjunto: ProfessorAdjunto
 
