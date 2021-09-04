@@ -116,11 +116,43 @@ codigoProfessor: Integer, quantidadeDeHoras: Integer)
         } catch (ex: Exception) {
             println("Nao foi possivel registrar esse professor! Tente Novamente.")
         }
+    }
+
+    /*
+    Criar um método na classe DigitalHouseManager que permita registrar um
+professor titular. O método recebe como parâmetros o nome do professor, o
+sobrenome, o código e a especialidade. O tempo de casa inicial do professor
+será zero. O método deve criar um professor titular com os dados
+correspondentes e adicioná-lo à lista de professores.
+
+○ fun registrarProfessorTitular(nome: String , sobrenome: String,
+codigoProfessor: Integer, especialidade: String)
+     */
+
+    fun registrarProfessorTitular(
+        nome: String,
+        sobrenome: String,
+        codigoProfessor: Int,
+        especialidade: String
+    ) {
+
+        for (cont in listaProfessores) {
+            if (codigoProfessor == cont.codigo) {
+                println("Esse Professor ja Existe.")
+                return
+            }
+        }
+        try {
+            var professorTitular =
+                ProfessorTitular(especialidade, nome, sobrenome, codigoProfessor, tempoDeCasa = 0)
+            listaProfessores.add(professorTitular)
+            println("Professor Titular Registrado")
+        } catch (ex: Exception) {
+            println("Nao foi possivel registrar esse professor! Tente Novamente.")
+        }
 
 
     }
-
-
 
 
 }
