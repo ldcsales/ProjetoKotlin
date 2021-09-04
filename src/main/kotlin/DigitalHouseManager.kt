@@ -26,6 +26,13 @@ os dados correspondentes e adicioná-lo à lista de cursos.
         codigoCurso: Int,
         quantidadeMaximaDeAlunos: Int
     ) {
+        for(cont in listaCursos){
+            if(codigoCurso == cont.codigo){
+                println("Esse codigo ja existe. Nao e possivel registrar curso com o mesmo codigo")
+                imprimeCodigo()
+                return
+            }
+        }
         try {
             var curso = Curso(nome, codigoCurso, quantidadeMaximaDeAlunos)
             listaCursos.add(curso)
@@ -35,5 +42,33 @@ os dados correspondentes e adicioná-lo à lista de cursos.
         }
 
 
+    }
+
+    fun imprimeCodigo(){
+        println("Lista de Codigos")
+        for (cont in listaCursos){
+            println(cont.codigo)
+        }
+    }
+
+    fun excluirCurso(codigoCurso: Int) {
+        if (codigoCurso < 0) {
+            println("Codigo Invalido")
+            return
+
+        }
+        for (cont in listaCursos) {
+            if (cont.codigo == codigoCurso) {
+                try {
+                    listaCursos.remove(cont)
+                    println("Curso foi removido da lista.")
+                    return
+                } catch (ex: Exception) {
+                    println("Nao foi possivel remover o curso da lista.")
+                }
+            }
+
+        }
+        println("Codigo de curso nao encontrado")
     }
 }

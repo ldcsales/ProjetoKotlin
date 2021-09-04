@@ -5,6 +5,14 @@ fun main() {
 
 
            // println(aluno1==aluno2)
+    var digital = DigitalHouseManager()
+    digital.registrarCurso("Matematica", 1,20)
+    digital.registrarCurso("Quimica", 2,30)
+
+    digital.imprimeCodigo()
+
+    digital.excluirCurso(1)
+    digital.imprimeCodigo()
 
 
 }
