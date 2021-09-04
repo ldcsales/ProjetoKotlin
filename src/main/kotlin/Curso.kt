@@ -5,8 +5,8 @@ curso possui um nome (String) e um código de curso (Integer).
 
 
 class Curso(
-    var nome: String,
-    var codigo: Int
+    var nome: String = "",
+    var codigo: Int = 0
 ) {
 
     //Um curso será igual a outro se seus códigos de curso forem iguais.
