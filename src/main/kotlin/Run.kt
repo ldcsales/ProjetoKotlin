@@ -9,10 +9,10 @@ fun main() {
     digital.registrarCurso("Matematica", 1,20)
     digital.registrarCurso("Quimica", 2,30)
 
-    digital.imprimeCodigo()
+    digital.imprimeCodigos()
 
     digital.excluirCurso(1)
-    digital.imprimeCodigo()
+    digital.imprimeCodigos()
 
 
 }

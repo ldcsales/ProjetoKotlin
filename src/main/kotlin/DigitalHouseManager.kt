@@ -21,15 +21,16 @@ os dados correspondentes e adicioná-lo à lista de cursos.
     quantidadeMaximaDeAlunos: Integer )
      */
 
+
     fun registrarCurso(
         nome: String,
         codigoCurso: Int,
         quantidadeMaximaDeAlunos: Int
     ) {
-        for(cont in listaCursos){
-            if(codigoCurso == cont.codigo){
+        for (cont in listaCursos) {
+            if (codigoCurso == cont.codigo) {
                 println("Esse codigo ja existe. Nao e possivel registrar curso com o mesmo codigo")
-                imprimeCodigo()
+                imprimeCodigos()
                 return
             }
         }
@@ -44,12 +45,22 @@ os dados correspondentes e adicioná-lo à lista de cursos.
 
     }
 
-    fun imprimeCodigo(){
+    //imprime os codigos dentro da lista de cursos.
+
+    fun imprimeCodigos() {
         println("Lista de Codigos")
-        for (cont in listaCursos){
+        for (cont in listaCursos) {
             println(cont.codigo)
         }
     }
+
+    /*
+    Criar um método na classe DigitalHouseManager que permita excluir um
+curso. O método recebe como parâmetro o código do curso. O método deve
+utilizar o código do curso para encontrá-lo na lista de cursos e excluí-lo da
+lista.
+○ fun excluirCurso(codigoCurso: Integer)
+     */
 
     fun excluirCurso(codigoCurso: Int) {
         if (codigoCurso < 0) {
@@ -71,4 +82,45 @@ os dados correspondentes e adicioná-lo à lista de cursos.
         }
         println("Codigo de curso nao encontrado")
     }
+
+    /*
+    Criar um método na classe DigitalHouseManager que permita registrar um
+professor adjunto. O método recebe como parâmetros o nome do professor, o
+sobrenome, o código e a quantidade de horas disponíveis para monitoria. O
+tempo de casa inicial do professor será zero. O método deve criar um
+professor adjunto com os dados correspondentes e adicioná-lo à lista de
+professores.
+
+○ fun registrarProfessorAdjunto(nome: String , sobrenome: String ,
+codigoProfessor: Integer, quantidadeDeHoras: Integer)
+     */
+
+    fun registrarProfessorAdjunto(
+        nome: String,
+        sobrenome: String,
+        codigoProfessor: Int,
+        quantidadeDeHoras: Int
+    ) {
+
+        for (cont in listaProfessores) {
+            if (codigoProfessor == cont.codigo) {
+                println("Esse Professor ja Existe.")
+                return
+            }
+        }
+        try {
+            var professorAdjunto =
+                ProfessorAdjunto(quantidadeDeHoras, nome, sobrenome, codigoProfessor, tempoDeCasa = 0)
+            listaProfessores.add(professorAdjunto)
+            println("Professor Adjunto Registrado")
+        } catch (ex: Exception) {
+            println("Nao foi possivel registrar esse professor! Tente Novamente.")
+        }
+
+
+    }
+
+
+
+
 }
