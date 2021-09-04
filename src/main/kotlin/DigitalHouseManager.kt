@@ -6,10 +6,10 @@ professores, uma lista de cursos e uma lista de matrículas
 
 class DigitalHouseManager {
 
-    lateinit var listaAlunos: MutableList<Aluno>
-    lateinit var listaProfessores: MutableList<Professor>
-    lateinit var listaCursos: MutableList<Curso>
-    lateinit var listaMatriculas: MutableList<Matricula>
+    var listaAlunos = mutableListOf<Aluno>()
+    var listaProfessores = mutableListOf<Professor>()
+    var listaCursos = mutableListOf<Curso>()
+    var listaMatriculas = mutableListOf<Matricula>()
 
     /*
     Criar um método na classe DigitalHouseManager que permita registrar um
