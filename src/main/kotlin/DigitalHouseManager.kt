@@ -30,7 +30,7 @@ os dados correspondentes e adicioná-lo à lista de cursos.
         for (cont in listaCursos) {
             if (codigoCurso == cont.codigo) {
                 println("Esse codigo ja existe. Nao e possivel registrar curso com o mesmo codigo")
-                imprimeCodigos()
+                imprimeCodigosCursos()
                 return
             }
         }
@@ -47,7 +47,7 @@ os dados correspondentes e adicioná-lo à lista de cursos.
 
     //imprime os codigos dentro da lista de cursos.
 
-    fun imprimeCodigos() {
+    fun imprimeCodigosCursos() {
         println("Lista de Codigos")
         for (cont in listaCursos) {
             println(cont.codigo)
@@ -202,16 +202,25 @@ Integer)
         for (cont in listaAlunos) {
             if (codigoAluno == cont.codigo) {
                 println("Esse codigo ja existe. Nao e possivel registrar alunos com o mesmo codigo")
-                //imprimeCodigos()
+                imprimeCodigosAlunos()
                 return
             }
         }
         try {
-            var aluno = Aluno(nome,sobrenome,codigoAluno)
+            var aluno = Aluno(nome, sobrenome, codigoAluno)
             listaAlunos.add(aluno)
             println("Aluno Registrado")
         } catch (ex: Exception) {
             println("Nao foi possivel registrar esse Aluno! Tente Novamente.")
+        }
+    }
+
+    //imprime os codigos dentro da lista de alunos.
+
+    fun imprimeCodigosAlunos() {
+        println("Lista de Codigos")
+        for (cont in listaAlunos) {
+            println(cont.codigo)
         }
     }
 
