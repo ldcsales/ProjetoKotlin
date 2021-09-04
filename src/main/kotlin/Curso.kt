@@ -18,6 +18,7 @@ class Curso(
         }
     }
 
+
     //Um curso será igual a outro se seus códigos de curso forem iguais.
 
     override fun equals(other: Any?): Boolean {
