@@ -42,6 +42,13 @@ class Curso(
         return codigo
     }
 
+    /*
+    Criar um método na classe Curso que permita adicionar um aluno à lista. O
+    método retornará true se o aluno puder ser adicionado ou false caso não
+    haja vagas disponíveis.
+        ● fun adicionarUmAluno(umAluno: Aluno): Boolean
+     */
+
     fun adicionarUmAluno(umAluno: Aluno): Boolean {
         if (qtdAtualAlunos < qtdMaximaAlunos) {
             listaMatriculados.add(umAluno)
@@ -61,6 +68,12 @@ class Curso(
             return false
         }
     }
+
+    /*
+    Criar um método na classe Curso que permita excluir um aluno da lista de
+    alunos do curso.
+        ● fun excluirAluno(umAluno: Aluno)
+     */
 
     fun excluirAluno(umAluno: Aluno) {
         listaMatriculados.remove(umAluno)
