@@ -1,5 +1,5 @@
 fun main() {
-    var dh = DigitalHouseManager()
+    val dh = DigitalHouseManager()
     dh.registrarProfessorTitular("Joao", "Silva", 1, "BD")
     dh.registrarProfessorTitular("Fernando", "Souza", 2, "Android")
     dh.registrarProfessorAdjunto("Carol", "Fernandes", 3, 0)

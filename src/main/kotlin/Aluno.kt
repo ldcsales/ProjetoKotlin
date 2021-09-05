@@ -1,5 +1,3 @@
-import java.lang.Exception
-
 /*Criar um diagrama de classes que modele a classe Aluno. A princípio, um
 aluno possui um nome (String), um sobrenome (String) e um código de
 aluno (Integer).
