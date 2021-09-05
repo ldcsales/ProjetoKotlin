@@ -2,13 +2,13 @@ class ProfessorTitular(
     var especialidade: String = "",
     nome: String,
     sobrenome: String,
+    tempoDeCasa: Int,
     codigo: Int,
-    tempoDeCasa: Int
 ) : Professor(
     nome,
     sobrenome,
-    codigo,
-    tempoDeCasa
+    tempoDeCasa,
+    codigo
 ) {
 
 

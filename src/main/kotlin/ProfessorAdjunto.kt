@@ -11,12 +11,12 @@ class ProfessorAdjunto(
     var horasMonitoria: Int = 0,
     nome: String,
     sobrenome: String,
-    codigo: Int,
-    tempoDeCasa: Int
+    tempoDeCasa: Int,
+    codigo: Int
 ) : Professor(
     nome,
     sobrenome,
-    codigo,
-    tempoDeCasa
+    tempoDeCasa,
+    codigo
 ) {
 }

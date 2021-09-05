@@ -1,18 +1,28 @@
 fun main() {
-    //var aluno1 = Aluno("Lucas", "Sales",1)
-    //var aluno2 = Aluno("Fernando", "Freitas",1)
+    var dh = DigitalHouseManager()
+    dh.registrarProfessorTitular("Joao", "Silva", 1, "BD")
+    dh.registrarProfessorTitular("Fernando", "Souza", 2, "Android")
+    dh.registrarProfessorAdjunto("Carol", "Fernandes", 3, 0)
+    dh.registrarProfessorAdjunto("Rebeca", "Araujo", 4, 10)
+    //dh.imprimeCodigosProfessores()
+    dh.registrarCurso("Full Stack", 20001, 3)
+    dh.registrarCurso("Android", 20002, 2)
 
+    dh.alocarProfessores(20001, 1, 3)
+    dh.alocarProfessores(20001, 2, 4)
 
+    dh.registrarAluno("Lucas", "Sales", 1)
+    dh.registrarAluno("Gabriel", "Nakamura", 2)
+    dh.registrarAluno("Kaique", "Agostinho", 3)
 
-           // println(aluno1==aluno2)
-    var digital = DigitalHouseManager()
-    digital.registrarCurso("Full Stack", 20001,3)
-    digital.registrarCurso("Android", 20002,2)
+    dh.matricularAluno(1, 20001)
+    dh.matricularAluno(2, 20001)
 
-    digital.imprimeCodigosCursos()
-
-    digital.excluirCurso(1)
-    digital.imprimeCodigosCursos()
+    dh.matricularAluno(1, 20002)
+    dh.matricularAluno(2, 20002)
+    dh.matricularAluno(3, 20002)
+    dh.imprimeCodigosProfessores()
+    dh.imprimeCodigosAlunos()
 
 
 }

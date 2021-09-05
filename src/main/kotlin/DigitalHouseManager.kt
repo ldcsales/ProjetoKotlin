@@ -110,7 +110,7 @@ codigoProfessor: Integer, quantidadeDeHoras: Integer)
         }
         try {
             var professorAdjunto =
-                ProfessorAdjunto(quantidadeDeHoras, nome, sobrenome, codigoProfessor, tempoDeCasa = 0)
+                ProfessorAdjunto(quantidadeDeHoras, nome, sobrenome, tempoDeCasa = 0, codigoProfessor)
             listaProfessores.add(professorAdjunto)
             println("Professor Adjunto Registrado")
         } catch (ex: Exception) {
@@ -143,8 +143,7 @@ codigoProfessor: Integer, especialidade: String)
             }
         }
         try {
-            var professorTitular =
-                ProfessorTitular(especialidade, nome, sobrenome, codigoProfessor, tempoDeCasa = 0)
+            var professorTitular = ProfessorTitular(especialidade, nome, sobrenome, tempoDeCasa = 0, codigoProfessor)
             listaProfessores.add(professorTitular)
             println("Professor Titular Registrado")
         } catch (ex: Exception) {
@@ -373,6 +372,15 @@ O método deve:
             }
         } else {
             println("Professor Titular nao encontrado")
+        }
+    }
+
+    //imprime os codigos dentro da lista de professores.
+
+    fun imprimeCodigosProfessores() {
+        println("Lista de Codigos")
+        for (cont in listaProfessores) {
+            println(cont.codigo)
         }
     }
 

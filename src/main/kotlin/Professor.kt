@@ -2,7 +2,7 @@ open class Professor(
     var nome: String = "",
     var sobrenome: String = "",
     var tempoDeCasa: Int = 0,
-    var codigo: Int = 0
+    var codigo: Int
 ) {
     // Bloco init para validar codigo maior que 0
     init {
