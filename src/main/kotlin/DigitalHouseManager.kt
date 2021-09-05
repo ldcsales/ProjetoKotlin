@@ -6,10 +6,10 @@ professores, uma lista de cursos e uma lista de matrículas
 
 class DigitalHouseManager {
 
-    var listaAlunos = mutableListOf<Aluno>()
-    var listaProfessores = mutableListOf<Professor>()
-    var listaCursos = mutableListOf<Curso>()
-    var listaMatriculas = mutableListOf<Matricula>()
+    private var listaAlunos = mutableListOf<Aluno>()
+    private var listaProfessores = mutableListOf<Professor>()
+    private var listaCursos = mutableListOf<Curso>()
+    private var listaMatriculas = mutableListOf<Matricula>()
 
     /*
     Criar um método na classe DigitalHouseManager que permita registrar um
@@ -47,7 +47,7 @@ os dados correspondentes e adicioná-lo à lista de cursos.
 
     //imprime os codigos dentro da lista de cursos.
 
-    fun imprimeCodigosCursos() {
+    private fun imprimeCodigosCursos() {
         println("Lista de Codigos")
         for (cont in listaCursos) {
             println(cont.codigo)
@@ -217,7 +217,7 @@ Integer)
 
     //imprime os codigos dentro da lista de alunos.
 
-    fun imprimeCodigosAlunos() {
+    private fun imprimeCodigosAlunos() {
         println("Lista de Codigos")
         for (cont in listaAlunos) {
             println(cont.codigo)
@@ -247,30 +247,71 @@ Integer)
         codigoAluno: Int,
         codigoCurso: Int
     ) {
+        if (existeCurso(codigoCurso)) {
+            if (existeAluno(codigoAluno)) {
+                var aluno = buscarAluno(codigoAluno)
+                var curso = buscarCurso(codigoCurso)
+                try {
+                    var matricula = Matricula(aluno, curso)
+                    listaMatriculas.add(matricula)
+                    println("Matricula Realizada")
+                } catch (ex: Exception) {
+                    println("Nao foi possivel realizar a matricula. Tente novamente")
+                }
+            } else {
+                println("Aluno nao encontrado")
+            }
+        } else {
+            println("Curso nao encontrado")
+        }
 
 
     }
 
-    //Consultar se existe o aluno na lista de alunos cadastrados
+//Consultar se existe o aluno na lista de alunos cadastrados
 
-    fun consultarAluno(codigoAluno: Int): Boolean {
-        for(cont in listaAlunos){
-            if(cont.codigo == codigoAluno){
+    private fun existeAluno(codigoAluno: Int): Boolean {
+        for (cont in listaAlunos) {
+            if (cont.codigo == codigoAluno) {
                 return true
             }
         }
         return false
     }
 
-    //Consultar se existe o curso na lista de cursos cadastrados
+//Retorna aluno da lista
 
-    fun consultarCurso(codigoCurso: Int): Boolean {
-        for(cont in listaCursos){
-            if(cont.codigo == codigoCurso){
+    private fun buscarAluno(codigoAluno: Int): Aluno? {
+        for (aluno in listaAlunos) {
+            if (aluno.codigo == codigoAluno) {
+                return aluno
+            }
+        }
+        return null
+    }
+
+
+//Consultar se existe o curso na lista de cursos cadastrados
+
+    private fun existeCurso(codigoCurso: Int): Boolean {
+        for (cont in listaCursos) {
+            if (cont.codigo == codigoCurso) {
                 return true
             }
         }
         return false
+    }
+
+// Retorna curso da lista
+
+    private fun buscarCurso(codigoCurso: Int): Curso? {
+        for (curso in listaCursos) {
+            if (curso.codigo == codigoCurso) {
+                return curso
+            }
+        }
+        return null
     }
 
 }
+

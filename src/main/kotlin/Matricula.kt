@@ -10,8 +10,8 @@ uma matrícula com a data do dia.
  */
 
 class Matricula(
-    var aluno: Aluno,
-    var curso: Curso
+    var aluno: Aluno?,
+    var curso: Curso?
 ) {
     init {
         var data = Date()
