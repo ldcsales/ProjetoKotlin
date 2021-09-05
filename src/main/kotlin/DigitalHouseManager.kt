@@ -194,7 +194,7 @@ adicioná-lo à lista de alunos.
 Integer)
      */
 
-    fun matricularAluno(
+    fun registrarAluno(
         nome: String,
         sobrenome: String,
         codigoAluno: Int
