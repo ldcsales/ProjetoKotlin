@@ -198,12 +198,12 @@ Integer)
         sobrenome: String,
         codigoAluno: Int
     ) {
-        for (cont in listaAlunos) {
-            if (codigoAluno == cont.codigo) {
-                println("Esse codigo ja existe. Nao e possivel registrar alunos com o mesmo codigo")
-                imprimeCodigosAlunos()
-                return
-            }
+        if (!validarCodigo(codigoAluno))
+            return
+        if (existeAluno(codigoAluno)) {
+            println("Esse codigo ja existe. Nao e possivel registrar alunos com o mesmo codigo")
+            imprimeCodigosAlunos()
+            return
         }
         try {
             var aluno = Aluno(nome, sobrenome, codigoAluno)
