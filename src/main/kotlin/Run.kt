@@ -23,6 +23,7 @@ fun main() {
     dh.matricularAluno(3, 20002)
     dh.imprimeCodigosProfessores()
     dh.imprimeCodigosAlunos()
+    dh.consultarMatriculas(1)
 
 
 }

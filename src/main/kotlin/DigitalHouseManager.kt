@@ -385,8 +385,16 @@ O método deve:
         }
     }
 
-    fun consultarMatriculas(codigo: Int){
-
+    fun consultarMatriculas(codigoAluno: Int){
+        for(cont in listaMatriculas){
+            if(cont.aluno?.codigo == codigoAluno)
+                println("""
+                
+                Aluno: ${cont.aluno?.nome} ${cont.aluno?.sobrenome}
+                Curso: ${cont.curso?.nome}
+                
+            """.trimIndent())
+        }
 
 
     }
