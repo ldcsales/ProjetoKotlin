@@ -47,7 +47,7 @@ os dados correspondentes e adicioná-lo à lista de cursos.
 
     //imprime os codigos dentro da lista de cursos.
 
-    private fun imprimeCodigosCursos() {
+    fun imprimeCodigosCursos() {
         println("Lista de Codigos")
         for (cont in listaCursos) {
             println(cont.codigo)
@@ -217,7 +217,7 @@ Integer)
 
     //imprime os codigos dentro da lista de alunos.
 
-    private fun imprimeCodigosAlunos() {
+    fun imprimeCodigosAlunos() {
         println("Lista de Codigos")
         for (cont in listaAlunos) {
             println(cont.codigo)
