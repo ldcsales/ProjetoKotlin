@@ -6,8 +6,8 @@ fun main() {
 
            // println(aluno1==aluno2)
     var digital = DigitalHouseManager()
-    digital.registrarCurso("Matematica", 1,20)
-    digital.registrarCurso("Quimica", 2,30)
+    digital.registrarCurso("Full Stack", 20001,3)
+    digital.registrarCurso("Android", 20002,2)
 
     digital.imprimeCodigosCursos()
 

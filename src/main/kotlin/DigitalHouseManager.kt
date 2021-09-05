@@ -302,6 +302,7 @@ Integer)
         return false
     }
 
+
 // Retorna curso da lista
 
     private fun buscarCurso(codigoCurso: Int): Curso? {
@@ -313,5 +314,70 @@ Integer)
         return null
     }
 
+    // Retorna professor da lista
+
+    private fun buscarProfessor(codigoProfessor: Int): Professor? {
+        for (professor in listaProfessores) {
+            if (professor.codigo == codigoProfessor) {
+                return professor
+            }
+        }
+        return null
+    }
+
+    //Consultar se existe o profressor na lista de professores cadastrados
+
+    private fun existeProfessor(codigoProfessor: Int): Boolean {
+        for (professor in listaProfessores) {
+            if (professor.codigo == codigoProfessor) {
+                return true
+            }
+        }
+        return false
+    }
+
+    /*
+    Criar um método na classe DigitalHouseManager que permita alocar
+professores a um curso. O método recebe como parâmetros o código do
+curso, o código do professor titular e o código do professor adjunto.
+○ fun alocarProfessores(codigoCurso: Integer,
+codigoProfessorTitular: Integer, codigoProfessorAdjunto:
+Integer)
+O método deve:
+● Encontrar o professor titular na lista de professores.
+● Encontrar o professor adjunto na lista de professores.
+● Alocar ambos professores ao curso.
+     */
+
+    fun alocarProfessores(
+        codigoCurso: Int,
+        codigoProfessorTitular: Int,
+        codigoProfessorAdjunto: Int
+    ) {
+        if (existeProfessor(codigoProfessorTitular)) {
+            if (existeProfessor(codigoProfessorAdjunto)) {
+                if (existeCurso(codigoCurso)) {
+                    var profTitular = buscarProfessor(codigoProfessorTitular)
+                    var profAdjunto = buscarProfessor(codigoProfessorAdjunto)
+                    var curso = buscarCurso(codigoCurso)
+                    try {
+                        curso?.profTitular = profTitular as ProfessorTitular
+                        curso?.profAdjunto = profAdjunto as ProfessorAdjunto
+                        println("Realizado alocacao de professores")
+                    } catch (ex: Exception) {
+                        println("Nao foi possivel realizar a alocacao de professores. Tente novamente")
+                    }
+                }
+            } else {
+                println("Professor Adjunto nao encontrado")
+            }
+        } else {
+            println("Professor Titular nao encontrado")
+        }
+    }
+
+
 }
+
+
 

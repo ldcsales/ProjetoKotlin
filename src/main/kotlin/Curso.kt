@@ -29,8 +29,8 @@ class Curso(
     var qtdAtualAlunos = 0
 
     var listaMatriculados = mutableListOf<Aluno>()
-    lateinit var profTitular: ProfessorTitular
-    lateinit var profAdjunto: ProfessorAdjunto
+    var profTitular: ProfessorTitular? = null
+    var profAdjunto: ProfessorAdjunto? = null
 
     //Um curso será igual a outro se seus códigos de curso forem iguais.
 
