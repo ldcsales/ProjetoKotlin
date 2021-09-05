@@ -386,20 +386,28 @@ O método deve:
     }
 
     fun consultarMatriculas(codigoAluno: Int) {
-        for (cont in listaMatriculas) {
-            if (cont.aluno?.codigo == codigoAluno)
-                println(
-                    """
+        if (existeAluno(codigoAluno)) {
+            for (cont in listaMatriculas) {
+                if (cont.aluno?.codigo == codigoAluno) {
+                    println(
+                        """
                 
                 Aluno: ${cont.aluno?.nome} ${cont.aluno?.sobrenome}
                 Curso: ${cont.curso?.nome}
                 
             """.trimIndent()
-                )
+                    )
+                } else {
+                    println("Aluno sem matricula")
+                }
+            }
+        } else {
+            println("Aluno nao existe no cadastro")
         }
-
-
     }
+
+
+}
 
 
 }
