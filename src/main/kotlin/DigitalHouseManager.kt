@@ -253,6 +253,7 @@ Integer)
                 try {
                     var matricula = Matricula(aluno, curso)
                     listaMatriculas.add(matricula)
+                    curso?.adicionarUmAluno(aluno)
                     println("Matricula Realizada")
                 } catch (ex: Exception) {
                     println("Nao foi possivel realizar a matricula. Tente novamente")
@@ -382,6 +383,12 @@ O método deve:
         for (cont in listaProfessores) {
             println(cont.codigo)
         }
+    }
+
+    fun consultarMatriculas(codigo: Int){
+
+
+
     }
 
 

@@ -28,7 +28,7 @@ class Curso(
 
     var qtdAtualAlunos = 0
 
-    var listaMatriculados = mutableListOf<Aluno>()
+    var listaMatriculados = mutableListOf<Aluno?>()
     var profTitular: ProfessorTitular? = null
     var profAdjunto: ProfessorAdjunto? = null
 
@@ -49,17 +49,19 @@ class Curso(
         ● fun adicionarUmAluno(umAluno: Aluno): Boolean
      */
 
-    fun adicionarUmAluno(umAluno: Aluno): Boolean {
+    fun adicionarUmAluno(umAluno: Aluno?): Boolean {
         if (qtdAtualAlunos < qtdMaximaAlunos) {
             listaMatriculados.add(umAluno)
             qtdAtualAlunos++
             println(
                 """
+                ----------------------------------------------------------------------    
                 Aluno matriculado
-                ${umAluno.codigo}
-                ${umAluno.nome} ${umAluno.sobrenome}
+                Codigo: ${umAluno?.codigo}
+                Nome: ${umAluno?.nome} ${umAluno?.sobrenome}
                 
                 Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.
+                ----------------------------------------------------------------------  
             """.trimIndent()
             )
             return true
