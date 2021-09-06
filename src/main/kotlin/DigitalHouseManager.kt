@@ -355,9 +355,10 @@ Integer)
                 var curso = buscarCurso(codigoCurso)
                 try {
                     var matricula = Matricula(aluno, curso)
-                    listaMatriculas.add(matricula)
-                    curso?.adicionarUmAluno(aluno)
-                    println("Matricula Realizada.\n")
+                    if (curso?.adicionarUmAluno(aluno) == true) {
+                        listaMatriculas.add(matricula)
+                        println("Matricula Realizada.\n")
+                    }
                 } catch (ex: Exception) {
                     println(red + "Nao foi possivel realizar a matricula. Tente novamente.\n" + reset)
                 }
@@ -367,7 +368,53 @@ Integer)
         } else {
             println(red + "Curso nao encontrado.\n" + reset)
         }
+    }
 
+    //Excluir matricula
+
+    fun desmatricularAluno(
+        codigoAluno: Int,
+        codigoCurso: Int
+    ) {
+        if (existeCurso(codigoCurso)) {
+            if (existeAluno(codigoAluno)) {
+                var aluno = buscarAluno(codigoAluno)
+                var curso = buscarCurso(codigoCurso)
+                try {
+                    var matricula = Matricula(aluno, curso)
+                    listaMatriculas.remove(matricula)
+                    curso?.excluirAluno(aluno)
+                    println("Matricula Cancelada.\n")
+                } catch (ex: Exception) {
+                    println(red + "Nao foi possivel cancelar a matricula. Tente novamente.\n" + reset)
+                }
+            } else {
+                println(red + "Aluno nao encontrado.\n" + reset)
+            }
+        } else {
+            println(red + "Curso nao encontrado.\n" + reset)
+        }
+    }
+
+    //Imprime Matriculas Ativas
+
+    fun imprimirMatriculas() {
+        println(
+            yellow +
+                    """
+            ------------------------------
+            -----Lista de Matriculas------
+        """.trimIndent() + reset
+        )
+        for (matricula in listaMatriculas) {
+            println(
+                """
+            Curso: ${matricula.curso?.codigo}  ${matricula.curso?.nome}
+            Aluno: ${matricula.aluno?.codigo}  ${matricula.aluno?.nome}
+                    """.trimIndent()
+            )
+            println(yellow + "------------------------------\n" + reset)
+        }
 
     }
 

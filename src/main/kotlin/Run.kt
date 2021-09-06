@@ -76,10 +76,17 @@ fun main() {
 */
     dh.registrarAluno("Lucas", "Sales", 1)
     dh.registrarAluno("Gabriel", "Nakamura", 2)
+    dh.registrarAluno("Lilian", "Silva", 3)
+    dh.registrarAluno("Fernanda", "Souza", 4)
     dh.registrarCurso("Full Stack", 20001, 3)
     dh.registrarCurso("Android", 20002, 2)
     dh.matricularAluno(1,20001)
+    dh.matricularAluno(2,20001)
     dh.matricularAluno(3,20001)
+    dh.matricularAluno(4,20001)
     dh.matricularAluno(1,20003)
+    dh.imprimirMatriculas()
+    dh.desmatricularAluno(8,20001)
+
 
 }
