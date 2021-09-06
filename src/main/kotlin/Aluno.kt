@@ -12,14 +12,6 @@ class Aluno(
     var sobrenome: String = "",
     var codigo: Int = 0,
 ) {
-    // Bloco init para validar codigo maior que 0
-    init {
-        if (codigo < 0) {
-            codigo = (codigo * -1)
-        } else if (codigo == 0) {
-            codigo = (1..1000).random()
-        }
-    }
 
 //Um aluno será igual a outro se seus códigos de aluno forem iguais.
 
@@ -32,17 +24,3 @@ class Aluno(
     }
 
 }
-
-/*
- //Preferiria fazer assim para nao ter problema com codigo do aluno
-class Aluno(
-    var nome: String,
-    var sobrenome: String,
-) {
-    var codigo = 0
-    init{
-        codigo++
-    }
-
-}
-*/

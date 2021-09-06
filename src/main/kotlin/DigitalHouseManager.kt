@@ -21,7 +21,6 @@ os dados correspondentes e adicioná-lo à lista de cursos.
     quantidadeMaximaDeAlunos: Integer )
      */
 
-
     fun registrarCurso(
         nome: String,
         codigoCurso: Int,
@@ -41,8 +40,6 @@ os dados correspondentes e adicioná-lo à lista de cursos.
         } catch (ex: Exception) {
             println("Nao foi possivel registrar esse curso! Tente Novamente.\n")
         }
-
-
     }
 
     //imprime os codigos dentro da lista de cursos.
@@ -83,7 +80,6 @@ lista.
         } else {
             println("Codigo de curso nao encontrado.\n")
         }
-
     }
 
     //Consultar se existe o curso na lista de cursos cadastrados
@@ -97,7 +93,6 @@ lista.
         return false
     }
 
-
 // Retorna curso da lista
 
     private fun buscarCurso(codigoCurso: Int): Curso? {
@@ -108,7 +103,6 @@ lista.
         }
         return null
     }
-
 
 /*
 Criar um método na classe DigitalHouseManager que permita registrar um
@@ -165,7 +159,7 @@ codigoProfessor: Integer, especialidade: String)
         if (!validarCodigo(codigoProfessor))
             return
         if (existeProfessor(codigoProfessor)) {
-            println("Esse codigo ja existe. Nao e possivel registrar professor com o mesmo codigo.\n")
+            println("Esse codigo ja existe. Nao e possivel registrar professores com o mesmo codigo.\n")
             imprimeCodigosProfessores()
             return
         }
@@ -176,8 +170,6 @@ codigoProfessor: Integer, especialidade: String)
         } catch (ex: Exception) {
             println("Nao foi possivel registrar esse professor! Tente Novamente.\n")
         }
-
-
     }
 
 /*
@@ -261,27 +253,75 @@ Integer)
         if (!validarCodigo(codigoAluno))
             return
         if (existeAluno(codigoAluno)) {
-            println("Esse codigo ja existe. Nao e possivel registrar alunos com o mesmo codigo")
+            println("Esse codigo ja existe. Nao e possivel registrar alunos com o mesmo codigo.\n")
             imprimeCodigosAlunos()
             return
         }
         try {
             var aluno = Aluno(nome, sobrenome, codigoAluno)
             listaAlunos.add(aluno)
-            println("Aluno Registrado")
+            println("Aluno Registrado.\n")
         } catch (ex: Exception) {
-            println("Nao foi possivel registrar esse Aluno! Tente Novamente.")
+            println("Nao foi possivel registrar esse Aluno! Tente Novamente.\n")
         }
     }
 
 //imprime os codigos dentro da lista de alunos.
 
     fun imprimeCodigosAlunos() {
-        println("Lista de Codigos")
-        for (cont in listaAlunos) {
-            println(cont.codigo)
+        println(
+            """
+            ------------------------------
+            -------Lista de Alunos-------
+        """.trimIndent()
+        )
+        for (aluno in listaAlunos) {
+            println("${aluno.codigo} ${aluno.nome}")
+        }
+        println("------------------------------\n")
+    }
+
+    //Consultar se existe o aluno na lista de alunos cadastrados
+
+    private fun existeAluno(codigoAluno: Int): Boolean {
+        for (aluno in listaAlunos) {
+            if (aluno.codigo == codigoAluno) {
+                return true
+            }
+        }
+        return false
+    }
+
+//Retorna aluno da lista
+
+    private fun buscarAluno(codigoAluno: Int): Aluno? {
+        for (aluno in listaAlunos) {
+            if (aluno.codigo == codigoAluno) {
+                return aluno
+            }
+        }
+        return null
+    }
+
+    //Excluir aluno da lista.
+
+    fun excluirAluno(codigoAluno: Int) {
+        if (!validarCodigo(codigoAluno))
+            return
+        if (existeAluno(codigoAluno)) {
+            try {
+                var aluno = buscarAluno(codigoAluno)
+                listaAlunos.remove(aluno)
+                println("Aluno(a) ${aluno?.nome} foi removido da lista.\n")
+                return
+            } catch (ex: Exception) {
+                println("Nao foi possivel remover o aluno da lista.\n")
+            }
+        } else {
+            println("Codigo de aluno nao encontrado.\n")
         }
     }
+
 /*
     Criar um método na classe DigitalHouseManager que permita matricular um
     aluno em um curso. O método recebe como parâmetros o código do aluno e
@@ -326,28 +366,6 @@ Integer)
         }
 
 
-    }
-
-//Consultar se existe o aluno na lista de alunos cadastrados
-
-    private fun existeAluno(codigoAluno: Int): Boolean {
-        for (cont in listaAlunos) {
-            if (cont.codigo == codigoAluno) {
-                return true
-            }
-        }
-        return false
-    }
-
-//Retorna aluno da lista
-
-    private fun buscarAluno(codigoAluno: Int): Aluno? {
-        for (aluno in listaAlunos) {
-            if (aluno.codigo == codigoAluno) {
-                return aluno
-            }
-        }
-        return null
     }
 
 
