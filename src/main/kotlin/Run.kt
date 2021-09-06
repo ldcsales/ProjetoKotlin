@@ -25,12 +25,22 @@ fun main() {
     dh.imprimeCodigosProfessores()
     dh.imprimeCodigosAlunos()
     dh.consultarMatriculas(1)
-*/
+
     dh.registrarCurso("Full Stack", 20001, 3)
     dh.registrarCurso("Android", 20002, 2)
     dh.imprimeCodigosCursos()
     dh.excluirCurso(20001)
     dh.imprimeCodigosCursos()
+*/
+    dh.registrarProfessorTitular("Joao", "Silva", 1, "BD")
+    dh.registrarProfessorTitular("Fernando", "Souza", 2, "Android")
+    dh.registrarProfessorAdjunto("Carol", "Fernandes", 3, 0)
+    dh.registrarProfessorAdjunto("Rebeca", "Araujo", 4, 10)
+    dh.imprimeCodigosProfessores()
+    dh.excluirProfessor(1)
+    dh.imprimeCodigosProfessores()
+    dh.excluirProfessor(3)
+    dh.imprimeCodigosProfessores()
 
 
 }

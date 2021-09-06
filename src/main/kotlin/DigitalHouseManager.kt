@@ -30,7 +30,7 @@ os dados correspondentes e adicioná-lo à lista de cursos.
         if (!validarCodigo(codigoCurso))
             return
         if (existeCurso(codigoCurso)) {
-            println("Esse codigo ja existe. Nao e possivel registrar cursos com o mesmo codigo")
+            println("Esse codigo ja existe. Nao e possivel registrar cursos com o mesmo codigo\n")
             imprimeCodigosCursos()
             return
         }
@@ -89,8 +89,8 @@ lista.
     //Consultar se existe o curso na lista de cursos cadastrados
 
     private fun existeCurso(codigoCurso: Int): Boolean {
-        for (cont in listaCursos) {
-            if (cont.codigo == codigoCurso) {
+        for (curso in listaCursos) {
+            if (curso.codigo == codigoCurso) {
                 return true
             }
         }
@@ -128,20 +128,20 @@ codigoProfessor: Integer, quantidadeDeHoras: Integer)
         codigoProfessor: Int,
         quantidadeDeHoras: Int
     ) {
-
-        for (cont in listaProfessores) {
-            if (codigoProfessor == cont.codigo) {
-                println("Esse Professor ja Existe.")
-                return
-            }
+        if (!validarCodigo(codigoProfessor))
+            return
+        if (existeProfessor(codigoProfessor)) {
+            println("Esse codigo ja existe. Nao e possivel registrar professor com o mesmo codigo.\n")
+            imprimeCodigosProfessores()
+            return
         }
         try {
             var professorAdjunto =
                 ProfessorAdjunto(quantidadeDeHoras, nome, sobrenome, tempoDeCasa = 0, codigoProfessor)
             listaProfessores.add(professorAdjunto)
-            println("Professor Adjunto Registrado")
+            println("Professor Adjunto Registrado\n")
         } catch (ex: Exception) {
-            println("Nao foi possivel registrar esse professor! Tente Novamente.")
+            println("Nao foi possivel registrar esse professor! Tente Novamente.\n")
         }
     }
 
@@ -162,19 +162,19 @@ codigoProfessor: Integer, especialidade: String)
         codigoProfessor: Int,
         especialidade: String
     ) {
-
-        for (cont in listaProfessores) {
-            if (codigoProfessor == cont.codigo) {
-                println("Esse Professor ja Existe.")
-                return
-            }
+        if (!validarCodigo(codigoProfessor))
+            return
+        if (existeProfessor(codigoProfessor)) {
+            println("Esse codigo ja existe. Nao e possivel registrar professor com o mesmo codigo.\n")
+            imprimeCodigosProfessores()
+            return
         }
         try {
             var professorTitular = ProfessorTitular(especialidade, nome, sobrenome, tempoDeCasa = 0, codigoProfessor)
             listaProfessores.add(professorTitular)
-            println("Professor Titular Registrado")
+            println("Professor Titular Registrado.\n")
         } catch (ex: Exception) {
-            println("Nao foi possivel registrar esse professor! Tente Novamente.")
+            println("Nao foi possivel registrar esse professor! Tente Novamente.\n")
         }
 
 
@@ -190,24 +190,57 @@ professores e eliminá-lo da lista.
  */
 
     fun excluirProfessor(codigoProfessor: Int) {
-        if (codigoProfessor < 0) {
-            println("Codigo Invalido")
+        if (!validarCodigo(codigoProfessor))
             return
-
-        }
-        for (cont in listaProfessores) {
-            if (cont.codigo == codigoProfessor) {
-                try {
-                    listaProfessores.remove(cont)
-                    println("Professor foi removido da lista.")
-                    return
-                } catch (ex: Exception) {
-                    println("Nao foi possivel remover o professor da lista.")
-                }
+        if (existeProfessor(codigoProfessor)) {
+            try {
+                var professor = buscarProfessor(codigoProfessor)
+                listaProfessores.remove(professor)
+                println("Professor(a) ${professor?.nome} foi removido da lista.\n")
+                return
+            } catch (ex: Exception) {
+                println("Nao foi possivel remover o professor da lista.\n")
             }
-
+        } else {
+            println("Codigo de professor nao encontrado.\n")
         }
-        println("Codigo de professor nao encontrado")
+    }
+
+    // Retorna professor da lista
+
+    private fun buscarProfessor(codigoProfessor: Int): Professor? {
+        for (professor in listaProfessores) {
+            if (professor.codigo == codigoProfessor) {
+                return professor
+            }
+        }
+        return null
+    }
+
+//Consultar se existe o profressor na lista de professores cadastrados
+
+    private fun existeProfessor(codigoProfessor: Int): Boolean {
+        for (professor in listaProfessores) {
+            if (professor.codigo == codigoProfessor) {
+                return true
+            }
+        }
+        return false
+    }
+
+    //imprime os codigos dentro da lista de professores.
+
+    fun imprimeCodigosProfessores() {
+        println(
+            """
+            ------------------------------
+            -----Lista de Professores-----
+        """.trimIndent()
+        )
+        for (professor in listaProfessores) {
+            println("${professor.codigo} ${professor.nome}")
+        }
+        println("------------------------------\n")
     }
 
 /*
@@ -318,28 +351,6 @@ Integer)
     }
 
 
-// Retorna professor da lista
-
-    private fun buscarProfessor(codigoProfessor: Int): Professor? {
-        for (professor in listaProfessores) {
-            if (professor.codigo == codigoProfessor) {
-                return professor
-            }
-        }
-        return null
-    }
-
-//Consultar se existe o profressor na lista de professores cadastrados
-
-    private fun existeProfessor(codigoProfessor: Int): Boolean {
-        for (professor in listaProfessores) {
-            if (professor.codigo == codigoProfessor) {
-                return true
-            }
-        }
-        return false
-    }
-
 /*
 Criar um método na classe DigitalHouseManager que permita alocar
 professores a um curso. O método recebe como parâmetros o código do
@@ -377,15 +388,6 @@ O método deve:
             }
         } else {
             println("Professor Titular nao encontrado")
-        }
-    }
-
-//imprime os codigos dentro da lista de professores.
-
-    fun imprimeCodigosProfessores() {
-        println("Lista de Codigos")
-        for (cont in listaProfessores) {
-            println(cont.codigo)
         }
     }
 
