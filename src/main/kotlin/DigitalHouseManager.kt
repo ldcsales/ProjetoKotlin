@@ -27,19 +27,19 @@ os dados correspondentes e adicioná-lo à lista de cursos.
         codigoCurso: Int,
         quantidadeMaximaDeAlunos: Int
     ) {
-        for (cont in listaCursos) {
-            if (codigoCurso == cont.codigo) {
-                println("Esse codigo ja existe. Nao e possivel registrar curso com o mesmo codigo")
-                imprimeCodigosCursos()
-                return
-            }
+        if (!validarCodigo(codigoCurso))
+            return
+        if (existeCurso(codigoCurso)) {
+            println("Esse codigo ja existe. Nao e possivel registrar cursos com o mesmo codigo")
+            imprimeCodigosCursos()
+            return
         }
         try {
             var curso = Curso(nome, codigoCurso, quantidadeMaximaDeAlunos)
             listaCursos.add(curso)
-            println("Curso Registrado")
+            println("Curso Registrado\n")
         } catch (ex: Exception) {
-            println("Nao foi possivel registrar esse curso! Tente Novamente.")
+            println("Nao foi possivel registrar esse curso! Tente Novamente.\n")
         }
 
 
@@ -48,10 +48,16 @@ os dados correspondentes e adicioná-lo à lista de cursos.
     //imprime os codigos dentro da lista de cursos.
 
     fun imprimeCodigosCursos() {
-        println("Lista de Codigos")
+        println(
+            """
+            ------------------------------
+            -------Lista de Codigos-------
+        """.trimIndent()
+        )
         for (cont in listaCursos) {
-            println(cont.codigo)
+            println("${cont.codigo} ${cont.nome}")
         }
+        println("------------------------------\n")
     }
 
     /*
@@ -63,28 +69,49 @@ lista.
      */
 
     fun excluirCurso(codigoCurso: Int) {
-        if (codigoCurso < 0) {
-            println("Codigo Invalido")
+        if (!validarCodigo(codigoCurso))
             return
-
-        }
-        for (cont in listaCursos) {
-            if (cont.codigo == codigoCurso) {
-                try {
-                    listaCursos.remove(cont)
-                    println("Curso foi removido da lista.")
-                    return
-                } catch (ex: Exception) {
-                    println("Nao foi possivel remover o curso da lista.")
-                }
+        if (existeCurso(codigoCurso)) {
+            try {
+                var curso = buscarCurso(codigoCurso)
+                listaCursos.remove(curso)
+                println("Curso foi removido da lista.\n")
+                return
+            } catch (ex: Exception) {
+                println("Nao foi possivel remover o curso da lista.\n")
             }
-
+        } else {
+            println("Codigo de curso nao encontrado.\n")
         }
-        println("Codigo de curso nao encontrado")
+
     }
 
-    /*
-    Criar um método na classe DigitalHouseManager que permita registrar um
+    //Consultar se existe o curso na lista de cursos cadastrados
+
+    private fun existeCurso(codigoCurso: Int): Boolean {
+        for (cont in listaCursos) {
+            if (cont.codigo == codigoCurso) {
+                return true
+            }
+        }
+        return false
+    }
+
+
+// Retorna curso da lista
+
+    private fun buscarCurso(codigoCurso: Int): Curso? {
+        for (curso in listaCursos) {
+            if (curso.codigo == codigoCurso) {
+                return curso
+            }
+        }
+        return null
+    }
+
+
+/*
+Criar um método na classe DigitalHouseManager que permita registrar um
 professor adjunto. O método recebe como parâmetros o nome do professor, o
 sobrenome, o código e a quantidade de horas disponíveis para monitoria. O
 tempo de casa inicial do professor será zero. O método deve criar um
@@ -93,7 +120,7 @@ professores.
 
 ○ fun registrarProfessorAdjunto(nome: String , sobrenome: String ,
 codigoProfessor: Integer, quantidadeDeHoras: Integer)
-     */
+ */
 
     fun registrarProfessorAdjunto(
         nome: String,
@@ -118,8 +145,8 @@ codigoProfessor: Integer, quantidadeDeHoras: Integer)
         }
     }
 
-    /*
-    Criar um método na classe DigitalHouseManager que permita registrar um
+/*
+Criar um método na classe DigitalHouseManager que permita registrar um
 professor titular. O método recebe como parâmetros o nome do professor, o
 sobrenome, o código e a especialidade. O tempo de casa inicial do professor
 será zero. O método deve criar um professor titular com os dados
@@ -127,7 +154,7 @@ correspondentes e adicioná-lo à lista de professores.
 
 ○ fun registrarProfessorTitular(nome: String , sobrenome: String,
 codigoProfessor: Integer, especialidade: String)
-     */
+ */
 
     fun registrarProfessorTitular(
         nome: String,
@@ -153,14 +180,14 @@ codigoProfessor: Integer, especialidade: String)
 
     }
 
-    /*
-    Criar um método na classe DigitalHouseManager que permita excluir um
+/*
+Criar um método na classe DigitalHouseManager que permita excluir um
 professor. O método recebe como parâmetro o código do professor. O
 método deve utilizar o código do professor para encontrá-lo na lista de
 professores e eliminá-lo da lista.
 
 ○ fun excluirProfessor(codigoProfessor: Integer)
-     */
+ */
 
     fun excluirProfessor(codigoProfessor: Int) {
         if (codigoProfessor < 0) {
@@ -183,15 +210,15 @@ professores e eliminá-lo da lista.
         println("Codigo de professor nao encontrado")
     }
 
-    /*
-    Criar um método na classe DigitalHouseManager que permita registrar um
+/*
+Criar um método na classe DigitalHouseManager que permita registrar um
 aluno. O método recebe como parâmetros o nome, o sobrenome e o código
 do aluno. O método deve criar um aluno com os dados correspondentes e
 adicioná-lo à lista de alunos.
 
 ○ matricularAluno(nome: String, sobrenome: String, codigoAluno:
 Integer)
-     */
+ */
 
     fun registrarAluno(
         nome: String,
@@ -214,7 +241,7 @@ Integer)
         }
     }
 
-    //imprime os codigos dentro da lista de alunos.
+//imprime os codigos dentro da lista de alunos.
 
     fun imprimeCodigosAlunos() {
         println("Lista de Codigos")
@@ -291,30 +318,7 @@ Integer)
     }
 
 
-//Consultar se existe o curso na lista de cursos cadastrados
-
-    private fun existeCurso(codigoCurso: Int): Boolean {
-        for (cont in listaCursos) {
-            if (cont.codigo == codigoCurso) {
-                return true
-            }
-        }
-        return false
-    }
-
-
-// Retorna curso da lista
-
-    private fun buscarCurso(codigoCurso: Int): Curso? {
-        for (curso in listaCursos) {
-            if (curso.codigo == codigoCurso) {
-                return curso
-            }
-        }
-        return null
-    }
-
-    // Retorna professor da lista
+// Retorna professor da lista
 
     private fun buscarProfessor(codigoProfessor: Int): Professor? {
         for (professor in listaProfessores) {
@@ -325,7 +329,7 @@ Integer)
         return null
     }
 
-    //Consultar se existe o profressor na lista de professores cadastrados
+//Consultar se existe o profressor na lista de professores cadastrados
 
     private fun existeProfessor(codigoProfessor: Int): Boolean {
         for (professor in listaProfessores) {
@@ -336,8 +340,8 @@ Integer)
         return false
     }
 
-    /*
-    Criar um método na classe DigitalHouseManager que permita alocar
+/*
+Criar um método na classe DigitalHouseManager que permita alocar
 professores a um curso. O método recebe como parâmetros o código do
 curso, o código do professor titular e o código do professor adjunto.
 ○ fun alocarProfessores(codigoCurso: Integer,
@@ -347,7 +351,7 @@ O método deve:
 ● Encontrar o professor titular na lista de professores.
 ● Encontrar o professor adjunto na lista de professores.
 ● Alocar ambos professores ao curso.
-     */
+ */
 
     fun alocarProfessores(
         codigoCurso: Int,
@@ -376,7 +380,7 @@ O método deve:
         }
     }
 
-    //imprime os codigos dentro da lista de professores.
+//imprime os codigos dentro da lista de professores.
 
     fun imprimeCodigosProfessores() {
         println("Lista de Codigos")

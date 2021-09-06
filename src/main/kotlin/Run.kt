@@ -1,5 +1,6 @@
 fun main() {
     var dh = DigitalHouseManager()
+    /*
     dh.registrarProfessorTitular("Joao", "Silva", 1, "BD")
     dh.registrarProfessorTitular("Fernando", "Souza", 2, "Android")
     dh.registrarProfessorAdjunto("Carol", "Fernandes", 3, 0)
@@ -24,8 +25,12 @@ fun main() {
     dh.imprimeCodigosProfessores()
     dh.imprimeCodigosAlunos()
     dh.consultarMatriculas(1)
-
-
+*/
+    dh.registrarCurso("Full Stack", 20001, 3)
+    dh.registrarCurso("Android", 20002, 2)
+    dh.imprimeCodigosCursos()
+    dh.excluirCurso(20001)
+    dh.imprimeCodigosCursos()
 
 
 }

@@ -16,11 +16,6 @@ class Curso(
 
     // Bloco init para validar codigo maior que 0
     init {
-        if (codigo < 0) {
-            codigo = (codigo * -1)
-        } else if (codigo == 0) {
-            codigo = (1..1000).random()
-        }
         if (qtdMaximaAlunos < 0) {
             qtdMaximaAlunos = 0
         }
@@ -55,18 +50,18 @@ class Curso(
             qtdAtualAlunos++
             println(
                 """
-                ----------------------------------------------------------------------    
-                Aluno matriculado
+                -------------------------------
+                -------Aluno Matriculado-------    
                 Codigo: ${umAluno?.codigo}
                 Nome: ${umAluno?.nome} ${umAluno?.sobrenome}
-                
+                -------------------------------
                 Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.
-                ----------------------------------------------------------------------  
+                  
             """.trimIndent()
             )
             return true
         } else {
-            println("Quantidade Maxima de alunos ja foi atingida.")
+            println("Quantidade Maxima de alunos ja foi atingida.\n")
             return false
         }
     }
@@ -82,11 +77,13 @@ class Curso(
         qtdAtualAlunos--
         println(
             """
-                Aluno removido
+                -------------------------------
+                --------Aluno  Removido--------
                 ${umAluno.codigo}
                 ${umAluno.nome} ${umAluno.sobrenome}
-                
+                -------------------------------
                 Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.
+                
             """.trimIndent()
         )
     }
