@@ -46,10 +46,11 @@ class Curso(
 
     fun adicionarUmAluno(umAluno: Aluno?): Boolean {
         if (qtdAtualAlunos < qtdMaximaAlunos) {
-            listaMatriculados.add(umAluno)
-            qtdAtualAlunos++
-            println(
-                """
+            try {
+                listaMatriculados.add(umAluno)
+                qtdAtualAlunos++
+                println(
+                    """
                 -------------------------------
                 -------Aluno Matriculado-------    
                 Codigo: ${umAluno?.codigo}
@@ -58,8 +59,12 @@ class Curso(
                 Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.
                   
             """.trimIndent()
-            )
-            return true
+                )
+                return true
+            } catch (ex: Exception) {
+                println("Nao foi possivel adicionar esse Aluno ao curso! Tente Novamente.\n")
+                return false
+            }
         } else {
             println("Quantidade Maxima de alunos ja foi atingida.\n")
             return false

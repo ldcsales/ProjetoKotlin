@@ -354,15 +354,15 @@ Integer)
                     var matricula = Matricula(aluno, curso)
                     listaMatriculas.add(matricula)
                     curso?.adicionarUmAluno(aluno)
-                    println("Matricula Realizada")
+                    println("Matricula Realizada.\n")
                 } catch (ex: Exception) {
-                    println("Nao foi possivel realizar a matricula. Tente novamente")
+                    println("Nao foi possivel realizar a matricula. Tente novamente.\n")
                 }
             } else {
-                println("Aluno nao encontrado")
+                println("Aluno nao encontrado.\n")
             }
         } else {
-            println("Curso nao encontrado")
+            println("Curso nao encontrado.\n")
         }
 
 
@@ -396,40 +396,39 @@ O método deve:
                     try {
                         curso?.profTitular = profTitular as ProfessorTitular
                         curso?.profAdjunto = profAdjunto as ProfessorAdjunto
-                        println("Realizado alocacao de professores")
+                        println("Realizado alocacao dos professores.\n")
                     } catch (ex: Exception) {
-                        println("Nao foi possivel realizar a alocacao de professores. Tente novamente")
+                        println("Nao foi possivel realizar a alocacao de professores. Tente novamente.\n")
                     }
                 }
             } else {
-                println("Professor Adjunto nao encontrado")
+                println("Professor Adjunto nao encontrado.\n")
             }
         } else {
-            println("Professor Titular nao encontrado")
+            println("Professor Titular nao encontrado.\n")
         }
     }
 
     fun consultarMatriculas(codigoAluno: Int) {
         if (existeAluno(codigoAluno)) {
-            for (cont in listaMatriculas) {
-                if (cont.aluno?.codigo == codigoAluno) {
+            for (matriculas in listaMatriculas) {
+                if (matriculas.aluno?.codigo == codigoAluno) {
                     println(
                         """
                 
-                Aluno: ${cont.aluno?.nome} ${cont.aluno?.sobrenome}
-                Curso: ${cont.curso?.nome}
+                Aluno: ${matriculas.aluno?.nome} ${matriculas.aluno?.sobrenome}
+                Curso: ${matriculas.curso?.nome}
                 
             """.trimIndent()
                     )
                 } else {
-                    println("Aluno sem matricula")
+                    println("Aluno sem matricula.\n")
                 }
             }
         } else {
-            println("Aluno nao existe no cadastro")
+            println("Aluno nao encontrado.\n")
         }
     }
-
 
 }
 
