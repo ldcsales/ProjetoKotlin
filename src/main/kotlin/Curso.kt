@@ -91,7 +91,6 @@ class Curso(
         println(red + "Nome: ${umAluno?.nome} ${umAluno?.sobrenome}" + reset)
         println(yellow + "-------------------------------" + reset)
         println("Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.")
-        )
     }
 
 
