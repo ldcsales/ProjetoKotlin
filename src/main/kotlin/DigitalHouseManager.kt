@@ -384,7 +384,6 @@ Integer)
                     var matricula = Matricula(aluno, curso)
                     if (curso?.excluirAluno(aluno) == true) {
                         listaMatriculas.remove(matricula)
-                        curso?.excluirAluno(aluno)
                         println("Matricula Cancelada.\n")
                     }
                 } catch (ex: Exception) {
