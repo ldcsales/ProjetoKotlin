@@ -1,3 +1,5 @@
+//CLASSE DE TESTE
+
 fun main() {
     var dh = DigitalHouseManager()
     /*
@@ -25,13 +27,13 @@ fun main() {
     dh.imprimeCodigosProfessores()
     dh.imprimeCodigosAlunos()
     dh.consultarMatriculas(1)
-
+*/
     dh.registrarCurso("Full Stack", 20001, 3)
     dh.registrarCurso("Android", 20002, 2)
     dh.imprimeCodigosCursos()
     dh.excluirCurso(20001)
     dh.imprimeCodigosCursos()
-*/
+
     /*
     dh.registrarProfessorTitular("Joao", "Silva", 1, "BD")
     dh.registrarProfessorTitular("Fernando", "Souza", 2, "Android")
@@ -44,7 +46,7 @@ fun main() {
     dh.imprimeCodigosProfessores()
 */
 
-    dh.registrarAluno("Lucas", "Sales", 1)
+    dh.registrarAluno("Lucas", "Sales", 2)
     dh.registrarAluno("Gabriel", "Nakamura", 2)
     dh.registrarAluno("Kaique", "Agostinho", 3)
     dh.imprimeCodigosAlunos()

@@ -29,16 +29,16 @@ os dados correspondentes e adicioná-lo à lista de cursos.
         if (!validarCodigo(codigoCurso))
             return
         if (existeCurso(codigoCurso)) {
-            println("Esse codigo ja existe. Nao e possivel registrar cursos com o mesmo codigo\n")
+            println(red + "Esse codigo ja existe. Nao e possivel registrar cursos com o mesmo codigo\n" + reset)
             imprimeCodigosCursos()
             return
         }
         try {
             var curso = Curso(nome, codigoCurso, quantidadeMaximaDeAlunos)
             listaCursos.add(curso)
-            println("Curso Registrado\n")
+            println(green + "Curso Registrado\n" + reset)
         } catch (ex: Exception) {
-            println("Nao foi possivel registrar esse curso! Tente Novamente.\n")
+            println(red + "Nao foi possivel registrar esse curso! Tente Novamente.\n" + reset)
         }
     }
 
@@ -46,15 +46,16 @@ os dados correspondentes e adicioná-lo à lista de cursos.
 
     fun imprimeCodigosCursos() {
         println(
-            """
+            yellow +
+                    """
             ------------------------------
             -------Lista de Codigos-------
-        """.trimIndent()
+        """.trimIndent() + reset
         )
         for (cont in listaCursos) {
             println("${cont.codigo} ${cont.nome}")
         }
-        println("------------------------------\n")
+        println(yellow + "------------------------------\n" + reset)
     }
 
     /*
@@ -72,13 +73,13 @@ lista.
             try {
                 var curso = buscarCurso(codigoCurso)
                 listaCursos.remove(curso)
-                println("Curso foi removido da lista.\n")
+                println(green + "Curso foi removido da lista.\n" + reset)
                 return
             } catch (ex: Exception) {
-                println("Nao foi possivel remover o curso da lista.\n")
+                println(red + "Nao foi possivel remover o curso da lista.\n" + reset)
             }
         } else {
-            println("Codigo de curso nao encontrado.\n")
+            println(red + "Codigo de curso nao encontrado.\n" + reset)
         }
     }
 
@@ -125,7 +126,7 @@ codigoProfessor: Integer, quantidadeDeHoras: Integer)
         if (!validarCodigo(codigoProfessor))
             return
         if (existeProfessor(codigoProfessor)) {
-            println("Esse codigo ja existe. Nao e possivel registrar professor com o mesmo codigo.\n")
+            println(red + "Esse codigo ja existe. Nao e possivel registrar professor com o mesmo codigo.\n" + reset)
             imprimeCodigosProfessores()
             return
         }
@@ -133,9 +134,9 @@ codigoProfessor: Integer, quantidadeDeHoras: Integer)
             var professorAdjunto =
                 ProfessorAdjunto(quantidadeDeHoras, nome, sobrenome, tempoDeCasa = 0, codigoProfessor)
             listaProfessores.add(professorAdjunto)
-            println("Professor Adjunto Registrado\n")
+            println(green + "Professor Adjunto Registrado\n" + reset)
         } catch (ex: Exception) {
-            println("Nao foi possivel registrar esse professor! Tente Novamente.\n")
+            println(red + "Nao foi possivel registrar esse professor! Tente Novamente.\n" + reset)
         }
     }
 
@@ -159,16 +160,16 @@ codigoProfessor: Integer, especialidade: String)
         if (!validarCodigo(codigoProfessor))
             return
         if (existeProfessor(codigoProfessor)) {
-            println("Esse codigo ja existe. Nao e possivel registrar professores com o mesmo codigo.\n")
+            println(red + "Esse codigo ja existe. Nao e possivel registrar professores com o mesmo codigo.\n" + reset)
             imprimeCodigosProfessores()
             return
         }
         try {
             var professorTitular = ProfessorTitular(especialidade, nome, sobrenome, tempoDeCasa = 0, codigoProfessor)
             listaProfessores.add(professorTitular)
-            println("Professor Titular Registrado.\n")
+            println(green + "Professor Titular Registrado.\n" + reset)
         } catch (ex: Exception) {
-            println("Nao foi possivel registrar esse professor! Tente Novamente.\n")
+            println(red + "Nao foi possivel registrar esse professor! Tente Novamente.\n" + reset)
         }
     }
 
@@ -188,13 +189,13 @@ professores e eliminá-lo da lista.
             try {
                 var professor = buscarProfessor(codigoProfessor)
                 listaProfessores.remove(professor)
-                println("Professor(a) ${professor?.nome} foi removido da lista.\n")
+                println(green + "Professor(a) ${professor?.nome} foi removido da lista.\n" + reset)
                 return
             } catch (ex: Exception) {
-                println("Nao foi possivel remover o professor da lista.\n")
+                println(red + "Nao foi possivel remover o professor da lista.\n" + reset)
             }
         } else {
-            println("Codigo de professor nao encontrado.\n")
+            println(red + "Codigo de professor nao encontrado.\n" + reset)
         }
     }
 
@@ -224,15 +225,16 @@ professores e eliminá-lo da lista.
 
     fun imprimeCodigosProfessores() {
         println(
-            """
+            yellow +
+                    """
             ------------------------------
             -----Lista de Professores-----
-        """.trimIndent()
+        """.trimIndent() + reset
         )
         for (professor in listaProfessores) {
             println("${professor.codigo} ${professor.nome}")
         }
-        println("------------------------------\n")
+        println(yellow + "------------------------------\n" + reset)
     }
 
 /*
@@ -253,16 +255,16 @@ Integer)
         if (!validarCodigo(codigoAluno))
             return
         if (existeAluno(codigoAluno)) {
-            println("Esse codigo ja existe. Nao e possivel registrar alunos com o mesmo codigo.\n")
+            println(red + "Esse codigo ja existe. Nao e possivel registrar alunos com o mesmo codigo.\n" + reset)
             imprimeCodigosAlunos()
             return
         }
         try {
             var aluno = Aluno(nome, sobrenome, codigoAluno)
             listaAlunos.add(aluno)
-            println("Aluno Registrado.\n")
+            println(green + "Aluno Registrado.\n" + reset)
         } catch (ex: Exception) {
-            println("Nao foi possivel registrar esse Aluno! Tente Novamente.\n")
+            println(red + "Nao foi possivel registrar esse Aluno! Tente Novamente.\n" + reset)
         }
     }
 
@@ -270,15 +272,16 @@ Integer)
 
     fun imprimeCodigosAlunos() {
         println(
-            """
+            yellow +
+                    """
             ------------------------------
             -------Lista de Alunos-------
-        """.trimIndent()
+        """.trimIndent() + reset
         )
         for (aluno in listaAlunos) {
             println("${aluno.codigo} ${aluno.nome}")
         }
-        println("------------------------------\n")
+        println(yellow + "------------------------------\n" + reset)
     }
 
     //Consultar se existe o aluno na lista de alunos cadastrados
@@ -312,13 +315,13 @@ Integer)
             try {
                 var aluno = buscarAluno(codigoAluno)
                 listaAlunos.remove(aluno)
-                println("Aluno(a) ${aluno?.nome} foi removido da lista.\n")
+                println(green + "Aluno(a) ${aluno?.nome} foi removido da lista.\n" + reset)
                 return
             } catch (ex: Exception) {
-                println("Nao foi possivel remover o aluno da lista.\n")
+                println(red + "Nao foi possivel remover o aluno da lista.\n" + reset)
             }
         } else {
-            println("Codigo de aluno nao encontrado.\n")
+            println(red + "Codigo de aluno nao encontrado.\n" + reset)
         }
     }
 
@@ -354,15 +357,15 @@ Integer)
                     var matricula = Matricula(aluno, curso)
                     listaMatriculas.add(matricula)
                     curso?.adicionarUmAluno(aluno)
-                    println("Matricula Realizada.\n")
+                    println(green + "Matricula Realizada.\n" + reset)
                 } catch (ex: Exception) {
-                    println("Nao foi possivel realizar a matricula. Tente novamente.\n")
+                    println(red + "Nao foi possivel realizar a matricula. Tente novamente.\n" + reset)
                 }
             } else {
-                println("Aluno nao encontrado.\n")
+                println(red + "Aluno nao encontrado.\n" + reset)
             }
         } else {
-            println("Curso nao encontrado.\n")
+            println(red + "Curso nao encontrado.\n" + reset)
         }
 
 
@@ -396,16 +399,16 @@ O método deve:
                     try {
                         curso?.profTitular = profTitular as ProfessorTitular
                         curso?.profAdjunto = profAdjunto as ProfessorAdjunto
-                        println("Realizado alocacao dos professores.\n")
+                        println(green + "Realizado alocacao dos professores.\n" + reset)
                     } catch (ex: Exception) {
-                        println("Nao foi possivel realizar a alocacao de professores. Tente novamente.\n")
+                        println(red + "Nao foi possivel realizar a alocacao de professores. Tente novamente.\n" + reset)
                     }
                 }
             } else {
-                println("Professor Adjunto nao encontrado.\n")
+                println(red + "Professor Adjunto nao encontrado.\n" + reset)
             }
         } else {
-            println("Professor Titular nao encontrado.\n")
+            println(red + "Professor Titular nao encontrado.\n" + reset)
         }
     }
 
@@ -414,19 +417,20 @@ O método deve:
             for (matriculas in listaMatriculas) {
                 if (matriculas.aluno?.codigo == codigoAluno) {
                     println(
-                        """
+                        yellow +
+                                """
                 
                 Aluno: ${matriculas.aluno?.nome} ${matriculas.aluno?.sobrenome}
                 Curso: ${matriculas.curso?.nome}
                 
-            """.trimIndent()
+            """.trimIndent() + reset
                     )
                 } else {
-                    println("Aluno sem matricula.\n")
+                    println(red + "Aluno sem matricula.\n" + reset)
                 }
             }
         } else {
-            println("Aluno nao encontrado.\n")
+            println(red + "Aluno nao encontrado.\n" + reset)
         }
     }
 
