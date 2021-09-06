@@ -49,7 +49,7 @@ os dados correspondentes e adicioná-lo à lista de cursos.
             yellow +
                     """
             ------------------------------
-            -------Lista de Codigos-------
+            -------Lista de Cursos-------
         """.trimIndent() + reset
         )
         for (cont in listaCursos) {
@@ -357,7 +357,7 @@ Integer)
                     var matricula = Matricula(aluno, curso)
                     listaMatriculas.add(matricula)
                     curso?.adicionarUmAluno(aluno)
-                    println(green + "Matricula Realizada.\n" + reset)
+                    println("Matricula Realizada.\n")
                 } catch (ex: Exception) {
                     println(red + "Nao foi possivel realizar a matricula. Tente novamente.\n" + reset)
                 }

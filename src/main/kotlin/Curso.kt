@@ -50,23 +50,23 @@ class Curso(
                 listaMatriculados.add(umAluno)
                 qtdAtualAlunos++
                 println(
-                    """
+                    yellow +
+                            """
                 -------------------------------
                 -------Aluno Matriculado-------    
-                Codigo: ${umAluno?.codigo}
-                Nome: ${umAluno?.nome} ${umAluno?.sobrenome}
-                -------------------------------
-                Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.
-                  
-            """.trimIndent()
+            """.trimIndent() + reset
                 )
+                println("Codigo: ${umAluno?.codigo}")
+                println("Nome: ${umAluno?.nome} ${umAluno?.sobrenome}")
+                println(yellow + "-------------------------------" + reset)
+                println("Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.")
                 return true
             } catch (ex: Exception) {
-                println("Nao foi possivel adicionar esse Aluno ao curso! Tente Novamente.\n")
+                println(red + "Nao foi possivel adicionar esse Aluno ao curso! Tente Novamente.\n" + reset)
                 return false
             }
         } else {
-            println("Quantidade Maxima de alunos ja foi atingida.\n")
+            println(red + "Quantidade Maxima de alunos ja foi atingida.\n" + reset)
             return false
         }
     }
@@ -81,15 +81,16 @@ class Curso(
         listaMatriculados.remove(umAluno)
         qtdAtualAlunos--
         println(
-            """
+            yellow +
+                    """
                 -------------------------------
-                --------Aluno  Removido--------
-                ${umAluno.codigo}
-                ${umAluno.nome} ${umAluno.sobrenome}
-                -------------------------------
-                Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.
-                
-            """.trimIndent()
+                -------Aluno Removido-------    
+            """.trimIndent() + reset
+        )
+        println(red + "Codigo: ${umAluno?.codigo}" + reset)
+        println(red + "Nome: ${umAluno?.nome} ${umAluno?.sobrenome}" + reset)
+        println(yellow + "-------------------------------" + reset)
+        println("Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.")
         )
     }
 
