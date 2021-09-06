@@ -77,8 +77,10 @@ class Curso(
         ● fun excluirAluno(umAluno: Aluno)
      */
 
-    fun excluirAluno(umAluno: Aluno?) {
-        if(existeMatriculado(umAluno?.codigo)) {
+    //ALterei retorno para Bool por causa do metodo desmatricularAluno para poder fazer a validacao.
+
+    fun excluirAluno(umAluno: Aluno?): Boolean {
+        if (existeMatriculado(umAluno?.codigo)) {
             try {
                 listaMatriculados.remove(umAluno)
                 qtdAtualAlunos--
@@ -93,15 +95,18 @@ class Curso(
                 println(red + "Nome: ${umAluno?.nome} ${umAluno?.sobrenome}" + reset)
                 println(yellow + "-------------------------------" + reset)
                 println("Restam ${(qtdMaximaAlunos - qtdAtualAlunos)} vagas nesse curso.")
+                return true
             } catch (ex: Exception) {
                 println(red + "Nao foi possivel remover esse Aluno do curso! Tente Novamente.\n" + reset)
+                return false
             }
-        }else{
+        } else {
             println(red + "Aluno nao matriculado nesse curso.\n" + reset)
+            return false
         }
     }
 
-    fun existeMatriculado(codigo : Int?):Boolean{
+    fun existeMatriculado(codigo: Int?): Boolean {
         for (aluno in listaMatriculados) {
             if (aluno?.codigo == codigo) {
                 return true

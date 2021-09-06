@@ -382,9 +382,11 @@ Integer)
                 var curso = buscarCurso(codigoCurso)
                 try {
                     var matricula = Matricula(aluno, curso)
-                    listaMatriculas.remove(matricula)
-                    curso?.excluirAluno(aluno)
-                    println("Matricula Cancelada.\n")
+                    if (curso?.excluirAluno(aluno) == true) {
+                        listaMatriculas.remove(matricula)
+                        curso?.excluirAluno(aluno)
+                        println("Matricula Cancelada.\n")
+                    }
                 } catch (ex: Exception) {
                     println(red + "Nao foi possivel cancelar a matricula. Tente novamente.\n" + reset)
                 }

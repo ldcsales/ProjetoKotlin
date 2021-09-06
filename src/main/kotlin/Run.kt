@@ -86,7 +86,7 @@ fun main() {
     dh.matricularAluno(4,20001)
     dh.matricularAluno(1,20003)
     dh.imprimirMatriculas()
-    dh.desmatricularAluno(8,20001)
+    dh.desmatricularAluno(4,20001)
 
 
 }
