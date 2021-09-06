@@ -14,7 +14,7 @@ class Curso(
     var qtdMaximaAlunos: Int = 0,
 ) {
 
-    // Bloco init para validar codigo maior que 0
+    // Bloco init para validar quantidade alunos maior que 0
     init {
         if (qtdMaximaAlunos < 0) {
             qtdMaximaAlunos = 0
